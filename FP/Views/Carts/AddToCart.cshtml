@@ -1,0 +1,139 @@
+﻿@model IEnumerable<Cart>
+@{
+
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<body>
+    <form asp-controller="Carts" asp-action="CheckOut">
+        @{ var sum = 0;}
+        <div class="site-section">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-md-12" method="post">
+                        <div class="site-blocks-table">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="product-thumbnail">@Html.DisplayNameFor(model => model.Product.ImagePath)</th>
+                                        <th class="product-name">@Html.DisplayNameFor(model => model.Product.Name)</th>
+                                        <th class="product-price">@Html.DisplayNameFor(model => model.Product.Price)</th>
+                                        <th class="product-quantity">@Html.DisplayNameFor(model => model.Amount)</th>
+                                        <th class="product-total">Total</th>
+                                        <th class="product-remove">Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="product-thumbnail">
+                                                <img src=@Url.Content("~/User/images/"+item.Product.ImagePath) asp-append-version="true" alt="Image" class="img-fluid">
+                                            </td>
+                                            <td class="product-name">
+                                                <h2 class="h5 text-black">@item.Product.Name</h2>
+                                            </td>
+                                            <td>$@item.Product.Price</td>
+                                            <td>
+                                                @item.Amount pieces
+
+                                            </td>
+
+
+                                            @{var x = item.Amount * item.Product.Price;}
+                                            @{ sum += (int)x;}
+                                            <td>$@x.ToString()</td>
+
+                                            <td><a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-primary btn-sm">X</a></td>
+                                        </tr>
+
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="col-md-4">
+                        <a class="btn btn-outline-primary  btn-block" asp-controller="User" asp-action="Index">Continue Shopping</a>
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 pl-5">
+                    <div class="row justify-content-end">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-12 text-right border-bottom mb-5">
+                                    <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <span class="text-black">Subtotal</span>
+                                    </div>
+                                    <div class="col-md-6 text-right">
+                                        <strong class="text-black">$@sum.ToString()</strong>
+                                    </div>
+                                </div>
+                                <div class="row mb-5">
+                                    <div class="col-md-6">
+                                        <span class="text-black">Tax</span>
+                                    </div>
+                                    <div class="col-md-6 text-right">
+                                        <strong class="text-black">$3.00</strong>
+                                    </div>
+                                </div>
+                                <div class="row mb-5">
+                                    <div class="col-md-6">
+                                        <span class="text-black">Delivery</span>
+                                    </div>
+                                    <div class="col-md-6 text-right">
+                                        <strong class="text-black">$3.0</strong>
+                                    </div>
+                                </div>
+                                <div class="row mb-5">
+                                    <div class="col-md-6">
+                                        <span class="text-black">Total</span>
+                                    </div>
+                                    <div class="col-md-6 text-right">
+                                        @{ sum += 6;}
+                                        <h1 class="text-black">$@sum.ToString()</h1>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" name="sum" value="@sum"/>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button class="btn btn-primary btn-lg py-3 btn-block" >Proceed To Checkout</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+   
+
+    <script>
+
+        function plus(amount) {
+            if (document.getElementById("input").value >= amount)
+                document.getElementById("input").value = -1;
+        }
+        function minus() {
+            if (document.getElementById("input").value == 1)
+                document.getElementById("input").value = 2;
+
+        }
+
+    </script>
+</body>
+</html>

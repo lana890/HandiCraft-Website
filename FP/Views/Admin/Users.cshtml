@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Login>
+@{ 
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<body>
+        <div class="site-section">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-md-12" method="post">
+                        <div class="site-blocks-table">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="product-thumbnail">Image</th>
+                                        <th class="product-name">User Name</th>
+
+                                        <th class="product-name">First Name</th>
+                                        <th class="product-price">Last Name</th>
+                                        <th class="product-quantity">Age</th>
+                                        <th class="product-total">Phone Number</th>
+                                        <th class="product-remove">Email</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td class="product-thumbnail">
+                                                <img src=@Url.Content("~/img/"+item.User.ImagePath) asp-append-version="true" alt="Image" height="100" width="100" class="img-fluid">
+                                            </td>
+                                            <td>@item.Username</td>
+                                            <td class="product-name">
+                                                <h2 class="h5 text-black">@item.User.Fname</h2>
+                                            </td>
+                                            <td>@item.User.Lname</td>
+                                            <td>
+                                               @item.User.Age
+
+                                            </td>
+
+
+                                           
+                                            <td>@item.User.Phonenumber</td>
+
+                                            <td>@item.User.Email</td>
+                                        </tr>
+
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+
+
+            </div>
+                </div>
+        </div>
+    
+
+
+ 
+</body>
+</html>

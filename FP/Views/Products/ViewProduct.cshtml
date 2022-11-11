@@ -1,0 +1,59 @@
+﻿@model Product
+@{
+    Layout ="~/Views/Shared/_UserLayout.cshtml";
+
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<body>
+    <form method="post" asp-controller="Carts" asp-action="AddToCart">
+
+        <div class="site-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src=@Url.Content("~/User/images/"+Model.ImagePath) asp-append-version="true" alt="Image" class="img-fluid" height="500" width="500" style="border:double">
+                    </div>
+                    <div class="col-md-6">
+                        <h1 class="text-black">
+                            <strong>
+                                @Model.Name
+                            </strong>
+                        </h1>
+
+                        <p><strong class="text-primary h4">$@Model.Price</strong></p>
+                        <input name="id" type="hidden" value="@Model.Id"/>
+                        <div class="mb-5">
+                            <div class="input-group mb-3" style="max-width: 120px;">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-outline-primary js-btn-minus" onclick="minus()" type="button">&minus;</button>
+                                </div>
+                                <input type="text" class="form-control text-center" id="input" value="1"  name="amount" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                <div class="input-group-append">
+
+                                    <button class="btn btn-outline-primary js-btn-plus" onclick="plus()" type="button">
+                                        &plus;
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <p><input type="submit" class="buy-now btn btn-sm btn-primary" value="Add To Cart "/>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <script>
+        function plus() {
+            if (document.getElementById("input").value >=@Model.Amount)
+                document.getElementById("input").value =@Model.Amount-1;
+        }
+          function minus() {
+            if (document.getElementById("input").value==1)
+                document.getElementById("input").value =2;
+        }
+    </script>
+</body>
+</html>

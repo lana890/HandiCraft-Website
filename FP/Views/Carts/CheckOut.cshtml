@@ -1,0 +1,144 @@
+﻿@model IEnumerable<Cart>
+@{ 
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<html>
+
+<body>
+    @{ var sum = 0;}
+    <form asp-controller="Carts" asp-action="Done">
+        
+        <div class="bg-light py-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <a href="cart.html">Cart</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Checkout</strong></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="site-section">
+            <div class="container">
+               
+                <div class="row">
+                    <div class="col-md-6 mb-5 mb-md-0">
+                        <h2 class="h3 mb-3 text-black">Billing Details</h2>
+                        <div class="p-3 p-lg-5 border">
+                            <div class="form-group">
+                                <label for="c_country" class="text-black">Country <span class="text-danger">*</span></label>
+                                <select id="c_country" name="Country" class="form-control">
+                                    <option value="1">Select a country</option>
+                                    <option value="Irbid">Irbid</option>
+                                    <option value="Amman">Amman</option>
+                                    <option value="Zarqa">Zarqa</option>
+                                    <option value="Jarash">Jarash</option>
+                                    <option value="Ajloun">Ajloun</option>
+                                    <option value="Salt">Salt</option>
+                                    <option value="Aqaba">Aqaba</option>
+                                </select>
+                            </div>
+
+
+
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="c_address" class="text-black">Address <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="c_address" name="Street" placeholder="Street address">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-12">
+                                    <label for="c_postal" class="text-black">Postal/Zip <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="c_postal" name="PostaZip" placeholder="Postal/Zip code">
+                                </div>
+                            </div>
+                            <p>PayPal</p>
+                            <div class="form-group row">
+                                <div class="col-md-6">
+                                    <label for="c_state_country" class="text-black">Exp <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="Exp">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="c_postal_zip" class="text-black">CVV <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="c_postal_zip" name="Cvv">
+                                </div>
+                            </div>
+
+                            <div class="form-group row mb-5">
+                                <div class="col-md-12">
+                                    <label for="c_email_address" class="text-black">serial number <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="c_email_address" name="SerNumber">
+                                </div>
+
+                            </div>
+
+
+
+
+
+
+                            <div class="form-group">
+                                <label for="c_order_notes" class="text-black">Order Notes</label>
+                                <textarea name="Note" id="c_order_notes" cols="30" rows="5" class="form-control" placeholder="Write your notes here..."></textarea>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+
+
+
+                        <div class="row mb-5">
+                            <div class="col-md-12">
+                                <h2 class="h3 mb-3 text-black">Your Order</h2>
+                                <div class="p-3 p-lg-5 border">
+                                    <table class="table site-block-order-table mb-5">
+                                        <thead>
+                                        <th>Product</th>
+                                        <th>Total</th>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                <tr>
+                                                    <td>@item.Product.Name <strong class="mx-2">x</strong>@item.Amount</td>
+                                                    @{ var price = item.Product.Price * item.Amount;}
+                                                    @{ sum += (int)price;}
+                                                    <td>$@price.ToString()</td>
+
+                                                </tr>
+                                            }
+
+                                            <tr>
+                                                <td class="text-black font-weight-bold"><strong>Cart Subtotal</strong></td>
+                                                <td class="text-black">$@sum.ToString()</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-black font-weight-bold"><strong>Order Total</strong></td>
+                                                <td class="text-black font-weight-bold"><strong>$@(sum + 6)</strong></td>
+                                                                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                  @{ sum += 6;}
+                                    <input type="hidden" name="sum"   value="@sum" />
+
+
+
+                                    <div class="form-group">
+                                        <button class="btn btn-primary btn-lg py-3 btn-block">Place Order</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- </form> -->
+            </div>
+        </div>
+    </form>
+
+
+</body>
+</html>

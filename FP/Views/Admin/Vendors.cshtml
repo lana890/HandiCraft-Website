@@ -1,0 +1,62 @@
+﻿@model IEnumerable<User>
+
+@{ 
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<h1>
+    <strong>Vendors waiting </strong></h1>
+
+<form asp-action="Massage" asp-controller="Admin" method="get">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Lname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Age)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Lname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Age)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <input type="hidden" name="id" value="@item.Id"/>
+                    <td>
+                        <input type="submit" value="Verify Vendor" /> |
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>
+

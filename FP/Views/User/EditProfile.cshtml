@@ -1,0 +1,157 @@
+﻿@model Login
+@{
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+
+}
+
+
+<section style="background-color: white">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col">
+                <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
+                    <ol class="breadcrumb mb-0">
+                        <li class="breadcrumb-item"><a asp-controller="User" asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row">
+            <form class="col-lg-4" asp-controller="User" asp-action="UpdatePic" method="post" enctype="multipart/form-data">
+                <div>
+                    <div class="card mb-4">
+                        <div class="card-body text-center">
+                            <img src=@Url.Content("~/img/"+Model.User.ImagePath) asp-append-version="true" height="300" width="300" alt="avatar"
+                                 class="rounded-circle img-fluid" style="width: 150px;">
+                            <h5 class="my-3">@Model.User.Fname @Model.User.Lname</h5>
+
+
+                        </div>
+                        <div class="form-group">
+                            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                            <input type="file" name="ImageFile" value="" placeholder="Image" />
+                        </div>
+                        <input type="hidden" name="Fname" value="@Model.User.Fname" />
+                        <input type="hidden" name="Lname" value="@Model.User.Lname" />
+                        <input type="hidden" name="Age" value="@Model.User.Age"/>
+                        <input type="hidden" name="Email" value="@Model.User.Email" />
+                        <input type="hidden" name="Phonenumber" value="@Model.User.Phonenumber" />
+                        <input type="hidden" name="Status" value="@Model.User.Status"  />
+                        <br />
+                        <div>
+                            <button class="btn btn-primary btn-lg py-3 btn-block">Done</button>
+                        </div>
+                    </div>
+
+                </div>
+               
+            </form>
+            <form class="col-lg-8" asp-controller="User" asp-action="EditProfile" method="Post">
+                <input type="hidden" name="og" value="@Model.Username" />
+
+                <div>
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">First Name</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">
+                                        <input name="Fname" value="@Model.User.Fname" />
+
+                                    </p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Last Name</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">
+                                        <input name="Lname" value="@Model.User.Lname" />
+                                    </p>
+                                </div>
+                            </div>
+                            <hr />
+
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Age</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">
+                                        <input name="Age" value="@Model.User.Age" />
+                                    </p>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Email</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">
+                                        <input name="Email" value="@Model.User.Email" />
+                                    </p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Phone</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">
+                                        <input name="PhoneNumber" value="@Model.User.Phonenumber" />
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <hr>
+                            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">User Name</p>
+                                </div>
+
+
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">
+                                        <input name="UserName" value="@Model.Username" />
+                                    </p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <p class="mb-0">Password</p>
+                                </div>
+                                <div class="col-sm-9">
+                                    <p class="text-muted mb-0">
+                                        <input name="Password" value="@Model.Password" />
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button class="btn btn-primary btn-lg py-3 btn-block">Done</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+            </form>
+</div>
+    </div>
+</section>

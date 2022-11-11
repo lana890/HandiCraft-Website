@@ -1,0 +1,61 @@
+﻿@model Product
+@{
+
+    Layout = "~/Views/Shared/_VendorLayout.cshtml";
+
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<body>
+    <form  asp-action="EditProduct" method="POST">
+        <input type="hidden" value="@Model.Id" name="id" />
+        <div class="site-section">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-md-12" method="post">
+                        <div class="site-blocks-table">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="product-thumbnail">Image</th>
+                                        <th class="product-name">Name</th>
+                                        <th class="product-price">Price</th>
+                                        <th class="product-quantity">Amount</th>
+                                        <th class="product-remove">Delete Item</th>
+                                        <th class="product-remove">Save</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    <tr>
+                                        <td class="product-thumbnail">
+                                            <img src=@Url.Content("~/User/images/"+Model.ImagePath) asp-append-version="true" alt="Image" class="img-fluid">
+                                            
+                                        </td>
+                                        <td class="product-name">
+                                            <input name="name" value="@Model.Name" />
+                                        </td>
+                                        <td><input name="price" value="@Model.Price" /> </td>
+                                        <td>
+                                            <input name="amount" value=" @Model.Amount" />
+                                        </td>
+
+                                        <td><a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-primary btn-sm">X</a></td>
+                                        <td><input type="submit" class="btn btn-primary btn-sm" value="Save"/></td>
+                                    </tr>
+
+                                    
+
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+
+
+</div>
+</div>
+</div>
+        </form>
+</body>
+</html>

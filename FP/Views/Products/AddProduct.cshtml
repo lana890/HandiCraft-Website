@@ -1,0 +1,51 @@
+﻿@model Product
+@{
+
+    Layout = "~/Views/Shared/_VendorLayout.cshtml";
+
+}
+<p style="text-align:center; margin:50px; color:black">
+    <strong>Please Enter Product Information </strong>
+</p>
+        
+<form method="POST" asp-controller="Products" asp-action="AddProduct" enctype="multipart/form-data" style="margin:100px; border:double">
+    <div style="margin:20px;">
+
+        <div class="form-outline mb-4">
+            <input type="text" asp-for="Name" id="form2Example11" class="form-control" placeholder="Name" />
+
+        </div>
+        <div class="form-outline mb-4">
+            <input type="number" asp-for="Amount" id="form2Example11" class="form-control" placeholder="Amount" />
+
+        </div>
+        <div class="form-outline mb-4">
+            <input type="number" asp-for="Price" id="form2Example11" class="form-control" placeholder="Price" />
+
+        </div>
+        <div class="form-outline mb-4">
+            <label>Catagory</label>
+            <select asp-for="CartagoryId">
+                <option value="1">Skin Care</option>
+                <option value="2">Clothes</option>
+                <option value="3">Furniture</option>
+                <option value="4">art</option>
+                <option value="5">accessories</option>
+
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+            <input asp-for="ImageFile" placeholder="Product Image" />
+        </div>
+    </div>
+
+    <div class="form-group form-button">
+        <input type="submit" id="signup" class="btn btn-primary btn-block fa-lg" style="width:100px; margin-left:20px" value="ADD" />
+    </div>
+
+
+
+</form>

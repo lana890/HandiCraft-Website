@@ -1,0 +1,43 @@
+﻿@model FP.Models.About
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h1>Details</h1>
+
+<div>
+    <h4>About</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ABOUTUS)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ABOUTUS)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MISSION)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MISSION)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.VISSION)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.VISSION)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ACHIVNEMT)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ACHIVNEMT)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

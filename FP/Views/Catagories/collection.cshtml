@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Product>
+@{ 
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    
+    <body>
+        <div class="" style="background-color:white">
+            <div class="container" style="padding:10px">
+                <div class=" block-3 site-blocks-2 ">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-md-7 site-section-heading text-center pt-4">
+                                <h2>  @ViewBag.catagory Collection </h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                           @if (Model.Count() > 0)
+                           {
+                            @foreach (var item in Model)
+                            {
+
+
+                                @if (item.Amount != 0)
+                                {
+
+                                    <div class="col-sm-6 col-md-5 col-lg-3 mb-3 mb-lg-0" data-aos="fade" data-aos-delay="" style="padding-top:40px">
+                                        <a class="block-2-item" asp-action="ViewProduct" asp-controller="Products" asp-route-id="@item.Id">
+                                            <figure class="image">
+                                                <img src=@Url.Content("~/User/images/" + item.ImagePath) asp-append-version="true" alt="" height="300" width="300">
+
+                                            </figure>
+                                            <div class="text">
+                                                <span class="text-uppercase">@item.Name</span>
+
+                                            </div>
+                                        </a>
+                                    </div>
+                                }
+                                else
+                                {
+                                        <div class="col-sm-6 col-md-5 col-lg-3 mb-3 mb-lg-0" data-aos="fade" data-aos-delay="" style="padding-top:40px; color:black;">
+                                            <a class="block-2-item">
+                                                <figure class="image">
+                                                    
+                                                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color:white; font-size:30px" >Sold Out</div>
+                                                    
+                                                    <img src=@Url.Content("~/User/images/" + item.ImagePath) asp-append-version="true" alt="" height="300" width="300">
+
+                                                </figure>
+                                                <div class="text">
+                                                    <span class="text-uppercase">@item.Name</span>
+
+                                                </div>
+                                            </a>
+                                        </div>
+                                }
+
+                            }
+                           }
+                           else
+                           {
+                           <div style="text-align:center">
+                               No Products yet
+                           </div>
+                           }
+                                    </div>
+                                </div>
+                </div>
+
+            </div>
+        </div>
+    </body>
+    </html>

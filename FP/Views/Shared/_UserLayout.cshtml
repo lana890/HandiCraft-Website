@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Shoppers &mdash; Colorlib e-Commerce Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
+    <link rel="stylesheet" href="~/User/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="~/User/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/User/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/User/css/jquery-ui.css">
+    <link rel="stylesheet" href="~/User/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/User/css/owl.theme.default.min.css">
+
+
+    <link rel="stylesheet" href="~/User/css/aos.css">
+    @*<link href="~/Admin/assets/css/material-dashboard.css" rel="stylesheet" />*@
+    <link rel="stylesheet" href="~/User/css/style.css">
+
+</head>
+<body>
+
+    <div class="site-wrap">
+        
+          
+            <header class="site-navbar" role="banner">
+                <div class="site-navbar-top">
+                    <div class="container">
+                        <div class="row align-items-center">
+
+                            <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
+                                <form asp-controller="User" asp-action="Search"  class="site-block-top-search">
+                                    <a class="icon icon-search2" ></a>
+                                    <input type="text" class="form-control border-0" placeholder="Search" name="search">
+
+                                </form>
+                            </div>
+
+                            <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
+                                <div class="site-logo">
+                                    <a href="index.html" class="js-logo-clone"><img src="~/img/hc3.png" width="70" height="70"/></a>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-md-4 order-3 order-md-3 text-right">
+                                <div class="site-top-icons">
+                                    <ul>
+                                        <li class="nav-item dropdown">
+                                            <a href="#" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <span class="icon icon-person"></span>
+
+                                                <p class="d-lg-none d-md-block">
+                                                    Account
+                                                </p>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                                                <a class="dropdown-item" asp-controller="User" asp-action="Profile">Profile</a>
+                                                <a class="dropdown-item" asp-controller="User" asp-action="EditProfile">Settings</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" asp-controller="User" asp-action="Logout">Log out</a>
+                                            </div>
+                                        </li>
+
+
+
+
+
+
+
+                                        <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
+                                        <li>
+                                            <a asp-controller="Carts" asp-action="AddToCart" class="site-cart">
+                                                <span class="icon icon-shopping_cart"></span>
+                                                @if (ViewBag.cart != null)
+                                                {
+                                    <span class="count">@ViewBag.cart</span> }
+                                else
+                                {
+                                    <span class="count">0</span>}
+                                            </a>
+                                        </li>
+                                        <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <nav class="site-navigation text-right text-md-center" role="navigation">
+                    <div class="container">
+                        <ul class="site-menu js-clone-nav d-none d-md-block">
+                            <li>
+                                <a asp-controller="User" asp-action="Index">Home</a>
+
+                            </li>
+                            <li>
+                                <a asp-controller="User" asp-action="About">About Us</a>
+                            </li>
+                            <li><a asp-controller="Contacts" asp-action="ContactUs">Contact Us</a></li>
+                            <li class="has-children">
+                                <a>Feed Back</a>
+                                <ul class="dropdown">
+                                    <li><a asp-controller="User" asp-action="ViewFeedback">FeedBacks</a></li>
+                                    <li><a asp-controller="User" asp-action="Feedback">Add Feedback</a></li>
+                                    
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <div>
+                @RenderBody()
+            </div>
+
+            <footer class="site-footer border-top" style="        background-color: lavenderblush
+">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 mb-5 mb-lg-0">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3 class="footer-heading mb-4">Navigations</h3>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <ul class="list-unstyled">
+                                        <li><a href="#">Sell online</a></li>
+                                        <li><a href="#">Features</a></li>
+                                        <li><a href="#">Shopping cart</a></li>
+                                        <li><a href="#">Store builder</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <ul class="list-unstyled">
+                                        <li><a href="#">Mobile commerce</a></li>
+                                        <li><a href="#">Dropshipping</a></li>
+                                        <li><a href="#">Website development</a></li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <ul class="list-unstyled">
+                                        <li><a href="#">Point of sale</a></li>
+                                        <li><a href="#">Hardware</a></li>
+                                        <li><a href="#">Software</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-3">
+                            <div class="block-5 mb-5">
+                                <h3 class="footer-heading mb-4">Contact Info</h3>
+                                <ul class="list-unstyled">
+                                    <li class="address">203 Fake St. Mountain View, San Francisco, California, USA</li>
+                                    <li class="phone"><a href="tel://23923929210">+2 392 3929 210</a></li>
+                                    <li class="email">emailaddress@domain.com</li>
+                                </ul>
+                            </div>
+
+                            <div class="block-7">
+                                <form action="#" method="post">
+                                    <label for="email_subscribe" class="footer-heading">Subscribe</label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control py-4" id="email_subscribe" placeholder="Email">
+                                        <input type="submit" class="btn btn-sm btn-primary" value="Send">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row pt-5 mt-5 text-center">
+                        <div class="col-md-12">
+                            <p>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                Copyright &copy;
+                                <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+                                <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" class="text-primary">Colorlib</a>
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </footer>
+</div>
+
+    <script src="~/User/js/jquery-3.3.1.min.js"></script>
+    <script src="~/User/js/jquery-ui.js"></script>
+    <script src="~/User/js/popper.min.js"></script>
+    <script src="~/User/js/bootstrap.min.js"></script>
+    <script src="~/User/js/owl.carousel.min.js"></script>
+    <script src="~/User/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/User/js/aos.js"></script>
+
+    <script src="~/User/js/main.js"></script>
+
+</body>
+</html>

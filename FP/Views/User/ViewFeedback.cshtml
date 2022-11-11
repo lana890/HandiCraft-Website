@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Feedback>
+@{
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <style>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            width: 40%;
+        }
+
+            .card:hover {
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            }
+
+        .container {
+            padding: 2px 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="" style="background-color:white">
+        <div class="container" style="padding:10px">
+            <div class=" block-3 site-blocks-2 ">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-7 site-section-heading text-center pt-4">
+                            <h2>Customer FeedBacks </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        @foreach (var item in Model)
+                        {
+
+
+                            <div class="col-md-3 card" style="margin-left:10px" >
+                                <img  src=@Url.Content("~/img/"+item.User.ImagePath) asp-append-version="true" alt="Avatar" style="width:100%; padding-top:10px">
+                                <div class="container">
+                                    <h4><b  style="color:black; font-size:small">@item.User.Fname @item.User.Lname</b></h4>
+                                    <p style="color:black; font-size:large">@item.Body</p>
+                                </div>
+                            </div>
+
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

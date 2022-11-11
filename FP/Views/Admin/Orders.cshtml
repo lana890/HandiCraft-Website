@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Order>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<body>
+    <div class="site-section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-12" method="post">
+                    <div class="site-blocks-table">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="product-thumbnail">Image</th>
+                                    <th class="product-name">Product Name</th>
+                                    <th class="product-price">Amount Sold</th>
+                                    <th class="product-price">Date Bought</th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td >
+                                        <img src=@Url.Content("~/User/images/"+item.Product.ImagePath) asp-append-version="true" alt="Image" height="100" width="100" class="img-fluid">
+                                    </td>
+                                    <td >
+                                        <h2 class="h5 text-black">@item.Product.Name</h2>
+                                    </td>
+                                    <td>@item.Amount</td>
+                                  
+                                    <td>
+                                        @item.Datee
+                                    </td>
+                                </tr>
+
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+</html>

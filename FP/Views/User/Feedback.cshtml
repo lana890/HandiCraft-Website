@@ -1,0 +1,21 @@
+﻿@model Feedback
+@{
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<form asp-controller="User" asp-action="AddFeedback">
+
+    <div class="p-3 p-lg-5 border">
+        <div class="form-group">
+
+            <div class="form-group">
+                <label for="c_order_notes" class="text-black">FeedBack</label>
+                <textarea id="c_order_notes" cols="30" rows="5" class="form-control" name="Body" placeholder="Write your FeedBack here..."></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-lg py-3 btn-block">Add Review</button>
+            </div>
+
+            </div>
+        </div>
+
+</form>

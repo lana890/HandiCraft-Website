@@ -1,0 +1,55 @@
+﻿
+@model IEnumerable<Product>
+@{
+    Layout = "~/Views/Shared/_VendorLayout.cshtml";
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<body>
+    <div class="" style="background-color:white">
+        <div class="container" style="padding:10px">
+            <div class=" block-3 site-blocks-2 ">
+                <div class="container">
+                    <form asp-controller="Products" asp-action="AddProduct" method="get">
+                        <div class="dropdown mr-1 ml-md-auto">
+                            <input  type="submit" class="btn btn-secondary btn-sm" value=" Add Product" aria-haspopup="true" aria-expanded="false" />
+                           </div>
+                            </form>
+
+                            <div class="row justify-content-center">
+                                <div class="col-md-7 site-section-heading text-center pt-4">
+                                    <h2>  @ViewBag.catagory My Products </h2>
+                                </div>
+                                <br /> <br />
+
+                            </div>
+                        </div>
+                    <div class="row">
+
+                        @foreach (var item in Model)
+                        {
+
+
+
+
+                <div class="col-sm-6 col-md-5 col-lg-3 mb-3 mb-lg-0" data-aos="fade" data-aos-delay="" style="padding-top:40px">
+                    <a class="block-2-item" asp-action="EditProduct" asp-controller="Products" asp-route-id="@item.Id">
+                        <figure class="image">
+                            <img src=@Url.Content("~/User/images/" + item.ImagePath) asp-append-version="true" alt="" height="300" width="300">
+
+                        </figure>
+                        <div class="text">
+                            <span class="text-uppercase">@item.Name</span>
+
+                        </div>
+                    </a>
+                </div>}
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>           
